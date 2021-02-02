@@ -32,6 +32,8 @@ puppeteer
                     socket.write(path + '\n');
                     socket.pipe(socket);
                     socket.end();
+
+                    await page.close();
                 })();
             });
 
