@@ -5,7 +5,10 @@ const fs = require('fs');
 const port = 3001;
 
 puppeteer
-    .launch({executablePath: '/usr/bin/chromium-browser'})
+    .launch({
+        executablePath: '/usr/bin/chromium-browser',
+        args: ['--no-sandbox'],
+    })
     .then(browser => {
         const server = net.createServer((socket) => {
             console.log('server created');
