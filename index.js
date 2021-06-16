@@ -30,7 +30,8 @@ puppeteer
                     const page = await browser.newPage();
                     await page.setContent(json.html);
                     await page.pdf({path: path});
-                    fs.chownSync(path, 33, 33); // 33 = www-data
+                    fs.chmodSync(path, 0o777);
+                    fs.chownSync(path, 33, 33);
 
                     console.log('pdf created', path);
 
