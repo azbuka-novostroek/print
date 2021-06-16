@@ -1,6 +1,7 @@
 const net = require('net');
 const puppeteer = require('puppeteer-core');
 const uuid = require('uuid');
+const fs = require('fs');
 const port = 3001;
 
 puppeteer
@@ -26,6 +27,7 @@ puppeteer
                     const page = await browser.newPage();
                     await page.setContent(json.html);
                     await page.pdf({path: path});
+                    fs.chmod(path, 0o777, () => {});
 
                     console.log('pdf created', path);
 
